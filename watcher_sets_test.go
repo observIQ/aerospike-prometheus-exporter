@@ -38,9 +38,9 @@ func TestSets_RefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestSets_RefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
+	InitConfig(DEFAULT_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	sets_runTestCase(t)
@@ -54,9 +54,9 @@ func TestSets_Allowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestSets_Allowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	sets_runTestCase(t)
@@ -70,14 +70,14 @@ func TestSets_RefreshWithLabelsConfig(t *testing.T) {
 	fmt.Println("initializing config ... TestSets_RefreshWithLabelsConfig")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(SetWatcher)
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
@@ -132,7 +132,7 @@ func sets_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}

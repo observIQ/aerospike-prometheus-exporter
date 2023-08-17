@@ -29,8 +29,8 @@ func TestLatencies_PassTwoKeys(t *testing.T) {
 	fmt.Println("initializing config ... TestLatencies_PassTwoKeys")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(DEFAULT_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(LatencyWatcher)
 
@@ -50,8 +50,8 @@ func TestLatencies_RefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestLatencies_RefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(DEFAULT_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	latencies_runTestCase(t)
@@ -65,14 +65,14 @@ func TestLatencies_RefreshWithLabelsConfig(t *testing.T) {
 	fmt.Println("initializing config ... TestLatencies_RefreshWithLabelsConfig")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(LatencyWatcher)
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
@@ -127,7 +127,7 @@ func latencies_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}

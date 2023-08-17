@@ -39,8 +39,8 @@ func TestUsers_Allowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestUsers_Allowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	// this is required as UserWatcher cheks for user/password in the properties file
 	config.Aerospike.User = "admin"
@@ -48,7 +48,7 @@ func TestUsers_Allowlist(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 
 	users_runTestCase(t)
 }
@@ -59,8 +59,8 @@ func TestUsers_RefreshWithLabelsConfig(t *testing.T) {
 	fmt.Println("initializing config ... TestUsers_RefreshWithLabelsConfig")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(UserWatcher)
 
@@ -70,7 +70,7 @@ func TestUsers_RefreshWithLabelsConfig(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
@@ -129,7 +129,7 @@ func users_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}

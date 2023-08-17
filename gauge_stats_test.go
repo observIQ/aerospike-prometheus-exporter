@@ -18,7 +18,7 @@ func TestGetGaugesNotEmpty(t *testing.T) {
 	// Initialize and validate Gauge config
 	gaugeList := new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeList)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeList)
 
 	nslist := gaugeList.NamespaceStats
 	nodelist := gaugeList.NodeStats
@@ -36,7 +36,7 @@ func TestGetGaugesCounts(t *testing.T) {
 	// Initialize and validate Gauge config
 	gaugeList := new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeList)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeList)
 
 	glist := gaugeList.NamespaceStats
 	assert.Equal(t, len(glist), 96)
@@ -63,7 +63,7 @@ func TestIsAGaugeTrue(t *testing.T) {
 	// Initialize and validate Gauge config
 	gaugeList := new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeList)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeList)
 
 	exists := false
 
@@ -94,7 +94,7 @@ func TestNoGaugeExists(t *testing.T) {
 	// Initialize and validate Gauge config
 	gaugeList := new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeList)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeList)
 
 	exists := gaugeList.isGauge(CTX_NAMESPACE, "non-existing-key")
 	assert.Equal(t, exists, false)

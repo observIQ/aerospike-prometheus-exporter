@@ -16,8 +16,8 @@ func TestSindex_PassOneKeys(t *testing.T) {
 	watcher := new(SindexWatcher)
 
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	// Check passoneKeys
 	passOneKeysOutputs := watcher.passOneKeys()
@@ -48,9 +48,9 @@ func TestSindex_RefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestSindex_RefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
+	InitConfig(DEFAULT_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	sindex_runTestCase(t)
@@ -64,9 +64,9 @@ func TestSindex_Allowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestSets_Allowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	sindex_runTestCase(t)
@@ -80,14 +80,14 @@ func TestSindex_RefreshWithLabelsConfig(t *testing.T) {
 	fmt.Println("initializing config ... TestSindex_RefreshWithLabelsConfig")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(SindexWatcher)
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
@@ -143,7 +143,7 @@ func sindex_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}

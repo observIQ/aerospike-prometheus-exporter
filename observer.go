@@ -71,7 +71,7 @@ func initAerospikeTLS() *tls.Config {
 	return tlsConfig
 }
 
-func newObserver(server *aero.Host, user, pass string) (o *Observer, err error) {
+func NewObserver(server *aero.Host, user, pass string) (o *Observer, err error) {
 	// initialize aerospike_node_up metric descriptor
 	nodeActiveDesc = prometheus.NewDesc(
 		"aerospike_node_up",

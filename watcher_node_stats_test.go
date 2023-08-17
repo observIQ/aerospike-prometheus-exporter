@@ -38,9 +38,9 @@ func TestNodeStats_RefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestNodeStats_RefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
+	InitConfig(DEFAULT_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	nodeStats_runTestCase(t)
@@ -54,9 +54,9 @@ func TestNodeStats_Allowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestNodeStats_Allowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	nodeStats_runTestCase(t)
@@ -70,9 +70,9 @@ func TestNodeStats_Blocklist(t *testing.T) {
 	fmt.Println("initializing config ... TestNodeStats_Blocklist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_BLOCKLIST_APE_TOML, config)
+	InitConfig(NS_BLOCKLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	nodeStats_runTestCase(t)
@@ -88,7 +88,7 @@ func nodeStats_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
