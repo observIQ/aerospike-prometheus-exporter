@@ -48,19 +48,19 @@ func main() {
 	log.Infof("Welcome to Aerospike Prometheus Exporter %s", version)
 
 	config = new(Config)
-	initConfig(*configFile, config)
-	config.validateAndUpdate()
+	InitConfig(*configFile, config)
+	config.ValidateAndUpdate()
 
 	// initialize Gauge metric definitions
 	gaugeStatHandler = new(GaugeStats)
-	initGaugeStats(*gaugeStatsFile, gaugeStatHandler)
+	InitGaugeStats(*gaugeStatsFile, gaugeStatHandler)
 
 	fullHost = net.JoinHostPort(config.Aerospike.Host, strconv.Itoa(int(config.Aerospike.Port)))
 
 	host := aero.NewHost(config.Aerospike.Host, int(config.Aerospike.Port))
 	host.TLSName = config.Aerospike.NodeTLSName
 
-	observer, err := newObserver(host, config.Aerospike.User, config.Aerospike.Password)
+	observer, err := NewObserver(host, config.Aerospike.User, config.Aerospike.Password)
 	if err != nil {
 		log.Fatalln(err)
 	}

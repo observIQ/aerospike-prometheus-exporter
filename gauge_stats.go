@@ -30,7 +30,7 @@ type GaugeStats struct {
 }
 
 // Initialize exporter configuration
-func initGaugeStats(pGaugeStatsFile string, pGaugeStats *GaugeStats) {
+func InitGaugeStats(pGaugeStatsFile string, pGaugeStats *GaugeStats) {
 
 	log.Infof("Loading Gauge Stats file %s", pGaugeStatsFile)
 

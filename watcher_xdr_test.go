@@ -43,14 +43,14 @@ func TestXdr_RefreshWithLabelsConfig(t *testing.T) {
 	fmt.Println("initializing config ... TestXdr_RefreshWithLabelsConfig")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(LABELS_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	watcher := new(XdrWatcher)
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}
@@ -105,8 +105,8 @@ func TestXdr_RefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestXdr_RefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
-	config.validateAndUpdate()
+	InitConfig(DEFAULT_APE_TOML, config)
+	config.ValidateAndUpdate()
 
 	xdr_runTestCase(t)
 
@@ -118,9 +118,9 @@ func TestXdr_Allowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestXdr_Allowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	// run the test-case logic
 	xdr_runTestCase(t)
@@ -136,7 +136,7 @@ func xdr_runTestCase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 	rawMetrics := getRawMetrics()
 
 	lObserver := &Observer{}

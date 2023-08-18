@@ -123,7 +123,7 @@ type Config struct {
 }
 
 // Validate and update exporter configuration
-func (c *Config) validateAndUpdate() {
+func (c *Config) ValidateAndUpdate() {
 	if c.AeroProm.Bind == "" {
 		c.AeroProm.Bind = ":9145"
 	}
@@ -142,7 +142,7 @@ func (c *Config) validateAndUpdate() {
 }
 
 // Initialize exporter configuration
-func initConfig(configFile string, config *Config) {
+func InitConfig(configFile string, config *Config) {
 	// to print everything out regarding reading the config in app init
 	log.SetLevel(log.DebugLevel)
 

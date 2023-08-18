@@ -48,9 +48,9 @@ func TestNamespaceRefreshDefault(t *testing.T) {
 	fmt.Println("initializing config ... TestNamespaceRefreshDefault")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(DEFAULT_APE_TOML, config)
+	InitConfig(DEFAULT_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	runTestcase(t)
 	os.Setenv(TESTCASE_MODE, TESTCASE_MODE_FALSE)
@@ -64,9 +64,9 @@ func TestNamespaceRefreshLabels(t *testing.T) {
 	fmt.Println("initializing config ... TestNamespaceRefreshLabels")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(LABELS_APE_TOML, config)
+	InitConfig(LABELS_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	runTestcase(t)
 	os.Setenv(TESTCASE_MODE, TESTCASE_MODE_FALSE)
@@ -80,9 +80,9 @@ func TestNamespaceRefreshAllowlist(t *testing.T) {
 	fmt.Println("initializing config ... TestNamespaceRefreshAllowlist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_ALLOWLIST_APE_TOML, config)
+	InitConfig(NS_ALLOWLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	runTestcase(t)
 
@@ -96,9 +96,9 @@ func TestNamespaceRefreshBlocklist(t *testing.T) {
 	fmt.Println("initializing config ... TestNamespaceRefreshBlocklist")
 	// Initialize and validate config
 	config = new(Config)
-	initConfig(NS_BLOCKLIST_APE_TOML, config)
+	InitConfig(NS_BLOCKLIST_APE_TOML, config)
 
-	config.validateAndUpdate()
+	config.ValidateAndUpdate()
 
 	runTestcase(t)
 
@@ -111,7 +111,7 @@ func runTestcase(t *testing.T) {
 
 	gaugeStatHandler = new(GaugeStats)
 
-	initGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
+	InitGaugeStats(METRICS_CONFIG_FILE, gaugeStatHandler)
 
 	// read raw-metrics from mock data gen, create observer and channel prometeus metric ingestion and processing
 	rawMetrics := getRawMetrics()
